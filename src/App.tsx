@@ -1,9 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import { SignIn } from './pages/auth/signIn';
+import { Home } from './pages/home/home';
 
 function App() {
-  return <div className='App'></div>;
+  return (
+    <div>
+      <Switch>
+        <Route path='/signin' component={SignIn} />
+        <Route path='/' component={Home} />
+      </Switch>
+    </div>
+  );
 }
 
 export default App;
