@@ -15,8 +15,35 @@ export const useStylesHome = makeStyles((theme) => ({
     fontSize: 18,
     marginLeft: 15,
   },
+  sideMenuListItem: {
+    cursor: 'pointer',
+    padding: '0 10px',
+    height: 50,
+    marginBottom: 10,
+    transition: 'background-color 0.15s ease-in-out',
+    borderRadius: 25,
+    '&:hover': {
+      '& h6': {
+        color: 'rgba(29,161,242,1.00)',
+      },
+      '& svg': {
+        color: 'rgba(29,161,242,1.00)',
+      },
+      backgroundColor: 'rgba(29, 161, 242, 0.1)',
+    },
+  },
   sideMenuListItemIcon: {
     fontSize: 28,
+  },
+  sideMenuTweetButton: {
+    padding: theme.spacing(2.5),
+    marginTop: theme.spacing(2),
+  },
+  tweet: {
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: 'rgb(245, 248, 250)',
+    },
   },
   tweetsWrapper: {
     borderRadius: 0,
