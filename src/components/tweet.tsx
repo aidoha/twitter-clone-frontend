@@ -51,38 +51,39 @@ export const Tweet: React.FC<TweetProps> = ({
           <Typography variant='body1' gutterBottom>
             {text}
           </Typography>
-          <Box
-            display='flex'
-            justifyContent='space-between'
-            width={450}
-            position='relative'
-            left={-12}
-          >
-            <Box display='flex' alignItems='center'>
-              <IconButton>
-                <CommentIcon style={{ fontSize: 20 }} />
-              </IconButton>
-              <span>1</span>
+          <Grid item lg={10} xs={10}>
+            <Box
+              display='flex'
+              justifyContent='space-between'
+              position='relative'
+              left={-12}
+            >
+              <Box display='flex' alignItems='center'>
+                <IconButton>
+                  <CommentIcon style={{ fontSize: 20 }} />
+                </IconButton>
+                <span>1</span>
+              </Box>
+              <Box display='flex' alignItems='center'>
+                <IconButton>
+                  <RepostIcon style={{ fontSize: 20 }} />
+                </IconButton>
+                <span>1</span>
+              </Box>
+              <Box display='flex' alignItems='center'>
+                <IconButton>
+                  <FavoriteNotLikedIcon style={{ fontSize: 20 }} />
+                </IconButton>
+                <span>1</span>
+              </Box>
+              <Box display='flex' alignItems='center'>
+                <IconButton>
+                  <ShareIcon style={{ fontSize: 20 }} />
+                </IconButton>
+                <span>1</span>
+              </Box>
             </Box>
-            <Box display='flex' alignItems='center'>
-              <IconButton>
-                <RepostIcon style={{ fontSize: 20 }} />
-              </IconButton>
-              <span>1</span>
-            </Box>
-            <Box display='flex' alignItems='center'>
-              <IconButton>
-                <FavoriteNotLikedIcon style={{ fontSize: 20 }} />
-              </IconButton>
-              <span>1</span>
-            </Box>
-            <Box display='flex' alignItems='center'>
-              <IconButton>
-                <ShareIcon style={{ fontSize: 20 }} />
-              </IconButton>
-              <span>1</span>
-            </Box>
-          </Box>
+          </Grid>
         </Grid>
       </Grid>
     </Paper>

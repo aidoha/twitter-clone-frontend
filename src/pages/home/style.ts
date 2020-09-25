@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
 
-export const useStylesHome = makeStyles((theme) => ({
+export const useStylesHome = makeStyles((theme: Theme) => ({
   wrapper: {
     height: '100vh',
   },
@@ -59,6 +59,44 @@ export const useStylesHome = makeStyles((theme) => ({
     padding: '10px 15px',
     '& h6': {
       fontWeight: 700,
+    },
+  },
+  rightSideBlock: {
+    backgroundColor: '#F5F8FA',
+    borderRadius: 15,
+    marginTop: 20,
+    '& .MuiList-root': {
+      paddingTop: 0,
+    },
+  },
+  rightSideBlockHeader: {
+    borderTop: 0,
+    borderLeft: 0,
+    borderRight: 0,
+    backgroundColor: 'transparent',
+    padding: '13px 18px',
+    '& b': {
+      fontSize: 20,
+      fontWeight: 800,
+    },
+  },
+  rightSideBlockItem: {
+    cursor: 'pointer',
+    '& .MuiTypography-body1': {
+      fontWeight: 700,
+    },
+    '& .MuiListItemAvatar-root': {
+      minWidth: 50,
+    },
+    '& .MuiListItemText-root': {
+      margin: 0,
+    },
+    '&:hover': {
+      backgroundColor: '#edf3f6',
+    },
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'none',
     },
   },
 }));

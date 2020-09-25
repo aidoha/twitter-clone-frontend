@@ -18,7 +18,14 @@ export const SideMenu: React.FC<SideMenuProps> = ({
   classes,
 }: SideMenuProps): React.ReactElement => {
   return (
-    <Box padding='0' margin='0' display='inline-flex' flexDirection='column'>
+    <Box
+      padding='0'
+      margin='0'
+      display='inline-flex'
+      flexDirection='column'
+      position='sticky'
+      top={0}
+    >
       <Box display='inline-flex' alignItems='center'>
         <IconButton color='primary' className={classes.logo}>
           <TwitterIcon className={classes.logoIcon} />
