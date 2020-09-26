@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { ModalBlock } from './modalBlock';
+import { AddTweetForm } from './addTweetForm';
+
 import { Box, IconButton, Hidden, Typography, Button } from '@material-ui/core';
+
+import CreateIcon from '@material-ui/icons/Create';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import HomeIcon from '@material-ui/icons/HomeOutlined';
 import SearchIcon from '@material-ui/icons/SearchRounded';
@@ -8,6 +14,7 @@ import MailIcon from '@material-ui/icons/MailOutline';
 import BookmarkIcon from '@material-ui/icons/BookmarkBorder';
 import ListIcon from '@material-ui/icons/ListAltRounded';
 import PersonIcon from '@material-ui/icons/PersonOutlineRounded';
+
 import { useStylesHome } from '../pages/home/style';
 
 interface SideMenuProps {
@@ -17,6 +24,16 @@ interface SideMenuProps {
 export const SideMenu: React.FC<SideMenuProps> = ({
   classes,
 }: SideMenuProps): React.ReactElement => {
+  const [visibleAddTweet, setVisibleAddTweet] = useState<boolean>(false);
+
+  const onCloseAddTweet = (): void => {
+    setVisibleAddTweet(false);
+  };
+
+  const onOpenAddTweet = (): void => {
+    setVisibleAddTweet(true);
+  };
+
   return (
     <Box
       padding='0'
@@ -125,17 +142,24 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       </Box>
 
       <Box display='inline-flex' alignItems='center'>
-        <Hidden mdDown>
-          <Button
-            className={classes.sideMenuTweetButton}
-            color='primary'
-            fullWidth
-            variant='contained'
-          >
-            Твитнуть
-          </Button>
-        </Hidden>
+        <Button
+          className={classes.sideMenuTweetButton}
+          color='primary'
+          fullWidth
+          variant='contained'
+          onClick={onOpenAddTweet}
+        >
+          <Hidden smDown>Твитнуть</Hidden>
+          <Hidden mdUp>
+            <CreateIcon />
+          </Hidden>
+        </Button>
       </Box>
+      <ModalBlock title='' visible={visibleAddTweet} onClose={onCloseAddTweet}>
+        <Box width='550px'>
+          <AddTweetForm classes={classes} />
+        </Box>
+      </ModalBlock>
     </Box>
   );
 };

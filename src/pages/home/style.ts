@@ -51,6 +51,18 @@ export const useStylesHome = makeStyles((theme: Theme) => ({
     borderTop: 0,
     borderBottom: 0,
   },
+  tweetAvatar: {
+    width: theme.spacing(6.5),
+    height: theme.spacing(6.5),
+    marginRight: 15,
+  },
+  tweetFooter: {
+    display: 'flex',
+    position: 'relative',
+    left: -13,
+    justifyContent: 'space-between',
+    maxWidth: 450,
+  },
   tweetsHeader: {
     borderTop: 0,
     borderLeft: 0,
@@ -98,5 +110,35 @@ export const useStylesHome = makeStyles((theme: Theme) => ({
       color: 'inherit',
       textDecoration: 'none',
     },
+  },
+  addFormBottom: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  addFormBottomActions: {
+    marginTop: 10,
+    paddingLeft: 70,
+  },
+  addFormTextarea: {
+    width: '100%',
+    border: 0,
+    fontSize: 20,
+    outline: 'none',
+    fontFamily: 'inherit',
+    resize: 'none',
+  },
+  addFormCircleProgress: {
+    position: 'relative',
+    width: 20,
+    height: 20,
+    margin: '0 10px',
+    '& .MuiCircularProgress-root': {
+      position: 'absolute',
+    },
+  },
+  addFormBottomRight: {
+    display: 'flex',
+    alignItems: 'center',
   },
 }));

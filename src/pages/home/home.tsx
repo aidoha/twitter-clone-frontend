@@ -1,21 +1,11 @@
 import React from 'react';
-import {
-  Grid,
-  Paper,
-  Hidden,
-  Container,
-  Typography,
-  InputAdornment,
-  Box,
-} from '@material-ui/core';
+
 import { Tweet } from '../../components/tweet';
 import { SideMenu } from '../../components/sideMenu';
 import { SearchTextField } from '../../components/searchTextFiled';
 import { Tags } from '../../components/tags';
+import { AddTweetForm } from '../../components/addTweetForm';
 
-import SearchIcon from '@material-ui/icons/SearchOutlined';
-import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import Divider from '@material-ui/core/Divider/Divider';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar/ListItemAvatar';
@@ -23,6 +13,16 @@ import Avatar from '@material-ui/core/Avatar/Avatar';
 import ListItemText from '@material-ui/core/ListItemText/ListItemText';
 import List from '@material-ui/core/List/List';
 import Button from '@material-ui/core/Button/Button';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Hidden from '@material-ui/core/Hidden';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Box from '@material-ui/core/Box';
+
+import SearchIcon from '@material-ui/icons/SearchOutlined';
+import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
 
 import { useStylesHome } from './style';
 
@@ -38,6 +38,10 @@ export const Home = () => {
           <Paper variant='outlined' className={classes.tweetsWrapper}>
             <Paper variant='outlined' className={classes.tweetsHeader}>
               <Typography variant='h6'>Главная</Typography>
+            </Paper>
+            <Paper>
+              <AddTweetForm classes={classes} />
+              <Box height={12} bgcolor='#E6ECF0' />
             </Paper>
             {[
               ...new Array(20).fill(
@@ -56,7 +60,7 @@ export const Home = () => {
           </Paper>
         </Grid>
         <Grid item lg={3} md={3}>
-          <Hidden mdDown>
+          <Hidden smDown>
             <Box position='sticky' top={0} paddingTop='20px'>
               <SearchTextField
                 variant='outlined'
