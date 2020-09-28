@@ -155,9 +155,9 @@ export const SideMenu: React.FC<SideMenuProps> = ({
           </Hidden>
         </Button>
       </Box>
-      <ModalBlock title='' visible={visibleAddTweet} onClose={onCloseAddTweet}>
+      <ModalBlock visible={visibleAddTweet} onClose={onCloseAddTweet}>
         <Box width='550px'>
-          <AddTweetForm classes={classes} />
+          <AddTweetForm maxRows={15} classes={classes} />
         </Box>
       </ModalBlock>
     </Box>

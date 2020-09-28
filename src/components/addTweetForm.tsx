@@ -16,12 +16,14 @@ import { useStylesHome } from '../pages/home/style';
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useStylesHome>;
+  maxRows?: number;
 }
 
 const MAX_LENGTH = 280;
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   classes,
+  maxRows,
 }: AddTweetFormProps): React.ReactElement => {
   const [text, setText] = useState<string>('');
 
@@ -41,7 +43,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   };
 
   return (
-    <Box padding='20px'>
+    <Box>
       <Box display='flex' width='100%'>
         <Avatar
           className={classes.tweetAvatar}
@@ -53,7 +55,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
           className={classes.addFormTextarea}
           placeholder='Что происходит?'
           value={text}
-          // rowsMax={maxRows}
+          rowsMax={maxRows}
         />
       </Box>
       <div className={classes.addFormBottom}>
@@ -112,12 +114,12 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
         </div>
       </div>
       {/* {addFormState === AddFormState.ERROR && ( */}
-      <Alert severity='error'>
+      {/* <Alert severity='error'>
         Ошибка при добавлении твита{' '}
         <span aria-label='emoji-plak' role='img'>
           😞
         </span>
-      </Alert>
+      </Alert> */}
       {/* )} */}
     </Box>
   );

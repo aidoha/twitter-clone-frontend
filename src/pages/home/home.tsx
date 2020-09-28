@@ -40,7 +40,9 @@ export const Home = () => {
               <Typography variant='h6'>Главная</Typography>
             </Paper>
             <Paper>
-              <AddTweetForm classes={classes} />
+              <Box padding='20px'>
+                <AddTweetForm classes={classes} />
+              </Box>
               <Box height={12} bgcolor='#E6ECF0' />
             </Paper>
             {[
