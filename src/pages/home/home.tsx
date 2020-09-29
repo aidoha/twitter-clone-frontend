@@ -26,7 +26,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
 
 import { useStylesHome } from './style';
 
-export const Home = () => {
+export const Home = (): React.ReactElement => {
   const classes = useStylesHome();
   return (
     <Container className={classes.wrapper} maxWidth='lg'>
