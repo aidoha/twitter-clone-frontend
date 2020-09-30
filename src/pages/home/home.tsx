@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Tweet } from '../../components/tweet';
 import { SideMenu } from '../../components/sideMenu';
@@ -20,14 +21,28 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Box from '@material-ui/core/Box';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import SearchIcon from '@material-ui/icons/SearchOutlined';
 import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
+
+import { fetchTweets } from '../../store/ducks/tweets/actionCreators';
+import {
+  selectIsTweetsLoading,
+  selectTweetsItems,
+} from '../../store/ducks/tweets/selectors';
 
 import { useStylesHome } from './style';
 
 export const Home = (): React.ReactElement => {
   const classes = useStylesHome();
+  const dispatch = useDispatch();
+  const tweets = useSelector(selectTweetsItems);
+  const isLoading = useSelector(selectIsTweetsLoading);
+
+  useEffect(() => {
+    dispatch(fetchTweets());
+  }, [dispatch]);
   return (
     <Container className={classes.wrapper} maxWidth='lg'>
       <Grid container spacing={3}>
@@ -45,20 +60,29 @@ export const Home = (): React.ReactElement => {
               </Box>
               <Box height={12} bgcolor='#E6ECF0' />
             </Paper>
-            {[
-              ...new Array(20).fill(
+            {isLoading ? (
+              <Box
+                display='flex'
+                justifyContent='center'
+                alignItems='center'
+                margin='20px'
+              >
+                <CircularProgress color='secondary' />
+              </Box>
+            ) : (
+              tweets.map((tweet) => (
                 <Tweet
+                  key={tweet._id}
                   classes={classes}
-                  text='ну же разденься побыстрее'
+                  text={tweet.text}
                   user={{
-                    username: 'aidoha7232',
-                    fullname: 'Aidyn Ibrayev',
-                    avatartUrl:
-                      'https://pbs.twimg.com/profile_images/1301947131553513473/G9gTgPfP_400x400.jpg',
+                    username: tweet.user.username,
+                    fullname: tweet.user.fullname,
+                    avatartUrl: tweet.user.avatarUrl,
                   }}
                 />
-              ),
-            ]}
+              ))
+            )}
           </Paper>
         </Grid>
         <Grid item lg={3} md={3}>
