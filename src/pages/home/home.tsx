@@ -31,8 +31,9 @@ import {
   selectIsTweetsLoading,
   selectTweetsItems,
 } from '../../store/ducks/tweets/selectors';
-
+import { fetchTags } from '../../store/tags/actionCreators';
 import { useStylesHome } from './style';
+import { Route } from 'react-router-dom';
 
 export const Home = (): React.ReactElement => {
   const classes = useStylesHome();
@@ -42,6 +43,7 @@ export const Home = (): React.ReactElement => {
 
   useEffect(() => {
     dispatch(fetchTweets());
+    dispatch(fetchTags());
   }, [dispatch]);
   return (
     <Container className={classes.wrapper} maxWidth='lg'>
@@ -49,42 +51,49 @@ export const Home = (): React.ReactElement => {
         <Grid item xs={2} lg={3} md={2}>
           <SideMenu classes={classes} />
         </Grid>
+
         <Grid item xs={10} lg={6} md={6}>
           <Paper variant='outlined' className={classes.tweetsWrapper}>
             <Paper variant='outlined' className={classes.tweetsHeader}>
               <Typography variant='h6'>Главная</Typography>
             </Paper>
-            <Paper>
-              <Box padding='20px'>
-                <AddTweetForm classes={classes} />
-              </Box>
-              <Box height={12} bgcolor='#E6ECF0' />
-            </Paper>
-            {isLoading ? (
-              <Box
-                display='flex'
-                justifyContent='center'
-                alignItems='center'
-                margin='20px'
-              >
-                <CircularProgress color='secondary' />
-              </Box>
-            ) : (
-              tweets.map((tweet) => (
-                <Tweet
-                  key={tweet._id}
-                  classes={classes}
-                  text={tweet.text}
-                  user={{
-                    username: tweet.user.username,
-                    fullname: tweet.user.fullname,
-                    avatartUrl: tweet.user.avatarUrl,
-                  }}
-                />
-              ))
-            )}
+            <Route path={['/home', '/home/search']} exact>
+              <Paper>
+                <Box padding='20px'>
+                  <AddTweetForm classes={classes} />
+                </Box>
+                <Box height={12} bgcolor='#E6ECF0' />
+              </Paper>
+            </Route>
+            <Route path='/home' exact>
+              {isLoading ? (
+                <Box
+                  display='flex'
+                  justifyContent='center'
+                  alignItems='center'
+                  margin='20px'
+                >
+                  <CircularProgress color='secondary' />
+                </Box>
+              ) : (
+                tweets.map((tweet) => (
+                  <Tweet
+                    key={tweet._id}
+                    classes={classes}
+                    {...tweet}
+                    // text={tweet.text}
+                    // user={{
+                    //   username: tweet.user.username,
+                    //   fullname: tweet.user.fullname,
+                    //   avatartUrl: tweet.user.avatarUrl,
+                    // }}
+                  />
+                ))
+              )}
+            </Route>
           </Paper>
         </Grid>
+
         <Grid item lg={3} md={3}>
           <Hidden smDown>
             <Box position='sticky' top={0} paddingTop='20px'>

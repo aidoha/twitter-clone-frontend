@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { ModalBlock } from './modalBlock';
 import { AddTweetForm } from './addTweetForm';
@@ -44,9 +45,11 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       top={0}
     >
       <Box display='inline-flex' alignItems='center'>
-        <IconButton color='primary' className={classes.logo}>
-          <TwitterIcon className={classes.logoIcon} />
-        </IconButton>
+        <Link to='/home'>
+          <IconButton color='primary' className={classes.logo}>
+            <TwitterIcon className={classes.logoIcon} />
+          </IconButton>
+        </Link>
       </Box>
 
       <Box

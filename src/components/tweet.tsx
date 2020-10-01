@@ -15,12 +15,13 @@ import ShareIcon from '@material-ui/icons/ReplyOutlined';
 import { useStylesHome } from '../pages/home/style';
 
 interface TweetProps {
+  _id: string;
   text: string;
   classes: ReturnType<typeof useStylesHome>;
   user: {
     fullname: string;
     username: string;
-    avatartUrl: string;
+    avatarUrl: string;
   };
 }
 
@@ -28,6 +29,7 @@ export const Tweet: React.FC<TweetProps> = ({
   classes,
   text,
   user,
+  _id,
 }: TweetProps): React.ReactElement => {
   return (
     <Paper
@@ -38,7 +40,7 @@ export const Tweet: React.FC<TweetProps> = ({
         <Grid item xs={2} lg={1}>
           <Avatar
             alt={`Аватар пользователя ${user?.fullname}`}
-            src={user?.avatartUrl}
+            src={user?.avatarUrl}
           />
         </Grid>
         <Grid item xs={10} lg={11}>
