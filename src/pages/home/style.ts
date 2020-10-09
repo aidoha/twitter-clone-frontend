@@ -68,6 +68,8 @@ export const useStylesHome = makeStyles((theme: Theme) => ({
     maxWidth: 450,
   },
   tweetsHeader: {
+    display: 'flex',
+    alignItems: 'center',
     borderTop: 0,
     borderLeft: 0,
     borderRight: 0,

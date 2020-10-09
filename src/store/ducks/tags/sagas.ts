@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { TweetsApi } from '../../services/api/tweetsApi';
+import { TweetsApi } from '../../../services/api/tweetsApi';
 import {
   setTags,
   setTweetsLoadingState,

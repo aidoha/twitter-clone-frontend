@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import { TweetsState } from './ducks/tweets/contracts/state';
 import { rootReducer } from './rootReducer';
 import { rootSaga } from './saga';
-import { TagsState } from './tags/contracts/state';
+import { TagsState } from './ducks/tags/contracts/state';
 
 declare global {
   interface Window {

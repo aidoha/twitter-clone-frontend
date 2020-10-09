@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Route, useHistory } from 'react-router-dom';
 
 import { Tweet } from '../../components/tweet';
 import { SideMenu } from '../../components/sideMenu';
@@ -22,24 +23,30 @@ import Typography from '@material-ui/core/Typography';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import IconButton from '@material-ui/core/IconButton';
 
 import SearchIcon from '@material-ui/icons/SearchOutlined';
 import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import { fetchTweets } from '../../store/ducks/tweets/actionCreators';
 import {
   selectIsTweetsLoading,
   selectTweetsItems,
 } from '../../store/ducks/tweets/selectors';
-import { fetchTags } from '../../store/tags/actionCreators';
+import { fetchTags } from '../../store/ducks/tags/actionCreators';
 import { useStylesHome } from './style';
-import { Route } from 'react-router-dom';
 
 export const Home = (): React.ReactElement => {
   const classes = useStylesHome();
   const dispatch = useDispatch();
   const tweets = useSelector(selectTweetsItems);
   const isLoading = useSelector(selectIsTweetsLoading);
+  const history = useHistory();
+
+  const handleTweetGoBack = () => {
+    history.goBack();
+  };
 
   useEffect(() => {
     dispatch(fetchTweets());
@@ -55,10 +62,13 @@ export const Home = (): React.ReactElement => {
         <Grid item xs={10} lg={6} md={6}>
           <Paper variant='outlined' className={classes.tweetsWrapper}>
             <Paper variant='outlined' className={classes.tweetsHeader}>
-              <Typography variant='h6'>Главная</Typography>
-              {/* <Route path="/home/:any">
-                <BackButton />
-              </Route> */}
+              <Route path='/home/:any'>
+                <Box marginRight='20px' onClick={handleTweetGoBack}>
+                  <IconButton color='primary'>
+                    <ArrowBackIcon />
+                  </IconButton>
+                </Box>
+              </Route>
 
               <Route path={['/home', '/home/search']} exact>
                 <Typography variant='h6'>Твиты</Typography>
@@ -88,17 +98,7 @@ export const Home = (): React.ReactElement => {
                 </Box>
               ) : (
                 tweets.map((tweet) => (
-                  <Tweet
-                    key={tweet._id}
-                    classes={classes}
-                    {...tweet}
-                    // text={tweet.text}
-                    // user={{
-                    //   username: tweet.user.username,
-                    //   fullname: tweet.user.fullname,
-                    //   avatartUrl: tweet.user.avatarUrl,
-                    // }}
-                  />
+                  <Tweet key={tweet._id} classes={classes} {...tweet} />
                 ))
               )}
             </Route>

@@ -8,7 +8,10 @@ import ListItem from '@material-ui/core/ListItem/ListItem';
 import ListItemText from '@material-ui/core/ListItemText/ListItemText';
 import Divider from '@material-ui/core/Divider/Divider';
 
-import { selectIsTagsLoading, selectTagsItems } from '../store/tags/selectors';
+import {
+  selectIsTagsLoading,
+  selectTagsItems,
+} from '../store/ducks/tags/selectors';
 
 import { useStylesHome } from '../pages/home/style';
 
