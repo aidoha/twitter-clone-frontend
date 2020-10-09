@@ -51,6 +51,10 @@ export const useStylesHome = makeStyles((theme: Theme) => ({
     borderTop: 0,
     borderBottom: 0,
   },
+  tweetWrapper: {
+    color: 'inherit',
+    textDecoration: 'none',
+  },
   tweetAvatar: {
     width: theme.spacing(6.5),
     height: theme.spacing(6.5),

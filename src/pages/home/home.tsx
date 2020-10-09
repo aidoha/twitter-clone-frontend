@@ -56,6 +56,17 @@ export const Home = (): React.ReactElement => {
           <Paper variant='outlined' className={classes.tweetsWrapper}>
             <Paper variant='outlined' className={classes.tweetsHeader}>
               <Typography variant='h6'>Главная</Typography>
+              {/* <Route path="/home/:any">
+                <BackButton />
+              </Route> */}
+
+              <Route path={['/home', '/home/search']} exact>
+                <Typography variant='h6'>Твиты</Typography>
+              </Route>
+
+              <Route path='/home/tweet'>
+                <Typography variant='h6'>Твитнуть</Typography>
+              </Route>
             </Paper>
             <Route path={['/home', '/home/search']} exact>
               <Paper>
